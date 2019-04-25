@@ -12,7 +12,6 @@ var routes = function() {
     })
 
     router.use('/:customer_id/order', function(req, res, next) {
-        console.log('nesting params: ' , req.params);
         req.customer_id = req.params.customer_id;
         next()
     }, ordersRouter);

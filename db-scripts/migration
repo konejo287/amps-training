@@ -1,0 +1,21 @@
+exports.up = knex => {
+  return knex.schema
+    .createTable('customer', table => {
+      table.increments('id').primary();
+      table.string('first_name');
+      table.string('last_name');
+    })
+    .createTable('orders', table => {
+      table.increments('id').primary();
+      table.timestamp('order_time_stamp');
+      table.integer('customer_id')
+        .references('id')
+        .inTable('customers');
+    });
+};
+
+exports.down = knex => {
+  return knex.schema
+    .dropTableIfExists('customers')
+    .dropTableIfExists('orders')
+};

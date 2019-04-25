@@ -7,17 +7,12 @@ const Customer = require('../models/Customer');
 var routes = function() {
     
     router.get('/', async (req, res) => {
-        const customer = await Customer.query().findOne({
-            customer_id: req.customer_id
-        }).eager('orders');
-
+        const customer = await Customer.query().findById(req.customer_id).eager('orders');
         res.json(customer)
     })
 
     router.get('/:order_id', async (req, res) => {
-        const order = await Order.query().findOne({
-            order_id: req.params.order_id
-        });
+        const order = await Order.query().findById(req.params.order_id);
         res.json(order)
     })
     return router;

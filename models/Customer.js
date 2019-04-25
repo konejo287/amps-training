@@ -27,7 +27,7 @@ class Customer extends Model {
         relation: Model.HasManyRelation,
         modelClass: __dirname + '/Order',
         join: {
-          from: 'customers.customer_id',
+          from: 'customers.id',
           to: 'orders.customer_id'
         }
       }

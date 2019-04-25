@@ -27,7 +27,7 @@ class Order extends Model {
         modelClass: __dirname + '/Customer',
         join: {
             from: 'orders.customer_id',
-            to: 'customers.customer_id'
+            to: 'customers.id'
         }
       }
     };
