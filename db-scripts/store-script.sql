@@ -25,5 +25,14 @@ CREATE TABLE orders (
 
 	id SERIAL PRIMARY KEY,
 	order_time_stamp TIMESTAMP NOT NULL,
-	customer_id INT REFERENCES customers (customer_id)
+	customer_id INT REFERENCES customers (id)
 );
+
+INSERT INTO customers (first_name, last_name)
+values('mario', 'arcos'),
+	  ('meme', 'mcCloud'),
+	  ('troy', 'lombardi');
+
+INSERT INTO orders (order_time_stamp, customer_id)
+values ('2019-05-22 19:10:25', 1),
+	   ('2019-06-20 11:11:25', 2);

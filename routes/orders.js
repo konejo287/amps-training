@@ -11,6 +11,11 @@ var routes = function() {
         res.json(customer)
     })
 
+    router.post('/', async (req, res) => {
+        const order = await Customer.$relatedQuery('orders').insert({order_time_stamp: '2019-02-10 12:15:25'});
+        res.json(order);
+    });
+
     router.get('/:order_id', async (req, res) => {
         const order = await Order.query().findById(req.params.order_id);
         res.json(order)
