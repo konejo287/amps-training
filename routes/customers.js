@@ -22,6 +22,12 @@ var routes = function() {
         res.json(customer);
     });
 
+    router.delete('/:id', async (req, res) => {
+        console.log("deleting customer");
+        const customer = await Customer.query().deleteById(req.params.id);
+        res.json(customer);
+    });
+
     router.use('/:customer_id/orders', function(req, res, next) {
         req.customer_id = req.params.customer_id;
         next()
