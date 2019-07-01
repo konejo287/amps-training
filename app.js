@@ -12,8 +12,9 @@ Model.knex(knexConnection)
 const app = express()
   .use(cors())
   .use(bodyParser.json())
+  .use(express.json())
   .use('/customers', customersRouter);
 
-const server = app.listen(8000, () => {
+const server = app.listen(8641, () => {
   console.log('Example app listening at port %s', server.address().port);
 });

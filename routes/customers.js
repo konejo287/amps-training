@@ -18,7 +18,12 @@ var routes = function() {
     });
 
     router.post('/', async (req, res) => {
-        const customer = await Customer.insert({first_name: 'pigma', last_name: "dengar"});
+        console.log('creating customer: ' , req.body);
+        const customer = await Customer.query()
+            .insert({
+                first_name: req.body.first_name, 
+                last_name: req.body.last_name
+            });
         res.json(customer);
     });
 
